@@ -1,0 +1,13 @@
+pike:
+  add:
+    - openstack-aodh
+    - openstack-ceilometer
+  remove:
+    - openstack-aodh
+    - openstack-ceilometer
+ocata:
+  add:
+    - openstack-aodh
+    - openstack-ceilometer
+
+

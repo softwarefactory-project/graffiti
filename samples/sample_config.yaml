@@ -1,0 +1,32 @@
+releases:
+- name: pike
+  tags:
+  - cloud7-openstack-pike-candidate
+  - cloud7-openstack-pike-testing
+  - cloud7-openstack-pike-release
+- name: ocata
+  tags:
+  - cloud7-openstack-ocata-candidate
+  - cloud7-openstack-ocata-testing
+  - cloud7-openstack-ocata-release
+- name: newton
+  tags:
+  - cloud7-openstack-newton-candidate
+  - cloud7-openstack-newton-testing
+  - cloud7-openstack-newton-release
+- name: mitaka
+  tags:
+  - cloud7-openstack-mitaka-candidate
+  - cloud7-openstack-mitaka-testing
+  - cloud7-openstack-mitaka-release
+- name: common
+  tags:
+  - cloud7-openstack-common-candidate
+  - cloud7-openstack-common-testing
+  - cloud7-openstack-common-release
+koji:
+  username: hguemar
+  url: https://cbs.centos.org/kojihub
+  client_cert: ~/.centos.cert
+  clientca_cert: ~/.centos-server-ca.cert
+  serverca_cert: /etc/pki/tls/certs/ca-bundle.trust.crt

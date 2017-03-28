@@ -1,0 +1,6 @@
+pike:
+  add:
+    - openstack-aodh
+    - openstack-ceilometer
+
+

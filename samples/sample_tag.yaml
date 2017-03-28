@@ -1,0 +1,5 @@
+pike:
+  testing:
+    - openstack-aodh-4.0.0-1.el7
+
+
