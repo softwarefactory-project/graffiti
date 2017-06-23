@@ -108,7 +108,8 @@ def main():
     subparsers.add_parser('version', help='show version')  # NOQA
 
     parser_list_candidates = subparsers.add_parser('list-candidates',
-                                                   help='list candidates builds')
+                                                   help='list candidates \
+                                                   builds')
     parser_list_candidates.add_argument('releases', nargs='+', help='releases')
 
     parser_list_testing = subparsers.add_parser('list-testing',
