@@ -7,11 +7,11 @@ import setuptools
 from graffiti import __version__
 
 
-def requires():
+def requires(prefix=''):
     """Retrieve requirements from requirements.txt
     """
     try:
-        reqs = map(str.strip, open('requirements.txt').readlines())
+        reqs = map(str.strip, open(prefix + 'requirements.txt').readlines())
         reqs = filter(lambda s: re.match(r'\W', s), reqs)
         return reqs
     except Exception:
@@ -30,6 +30,7 @@ setuptools.setup(
         'graffiti'
     ],
     install_requires=requires(),
+    tests_require=requires(prefix="test-"),
     entry_points={
         'console_scripts': ['graffiti = graffiti.cli:main']
     }
