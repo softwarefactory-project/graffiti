@@ -1,3 +1,7 @@
-# UUID                                  	Group Name
-#
+# UUID Group Name
+global:Registered-Users	Registered Users
 3e9524ec5161dc0bc28a7343d1c54bb9ae4d6d35	Administrators
+global:Anonymous-Users	Anonymous Users
+e1c0f58650a4829e8367c992822eb371c4a5c68d	graffiti-ptl
+f6221fc0e01bbbf4a0631f7afbe4edfc66166256	graffiti-core
+9562193e1f1647ee1c2004b4fb7996e84ae7e717	Non-Interactive Users
