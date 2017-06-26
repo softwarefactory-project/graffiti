@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_59c4433f",
+        "filename": "graffiti/cli.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2017-06-26T17:43:28Z",
+      "side": 1,
+      "message": "ack",
+      "revId": "7e24e5d151295e96f079f13faf40df3936ebe85c",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_79c70746",
+        "filename": "graffiti/cli.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2017-06-26T17:43:28Z",
+      "side": 1,
+      "message": "nitpick, rename it to formatter?",
+      "revId": "7e24e5d151295e96f079f13faf40df3936ebe85c",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_99cacb4e",
+        "filename": "graffiti/cli.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2017-06-26T17:43:28Z",
+      "side": 1,
+      "message": "I\u0027d add shortcut -f for usability.",
+      "revId": "7e24e5d151295e96f079f13faf40df3936ebe85c",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
