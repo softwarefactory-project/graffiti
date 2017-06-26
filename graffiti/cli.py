@@ -3,12 +3,14 @@
 """
 from __future__ import print_function
 import argparse
+import json
+import pprint
 import sys
 import six
+import yaml
 from graffiti import __version__
 from graffiti.kojiclient import KojiClient
 from graffiti.config import parse_config_file, parse_command_file
-
 
 def configure_koji(config):
     """Configure a Koji object to be usable by commands
@@ -26,6 +28,25 @@ def version_cmd():
     print("graffiti version: {}".format(__version__))
 
 
+# Different output formats functions
+def format_pretty(missing):
+    pp = pprint.PrettyPrinter(indent=4)
+    pp.pprint(missing)
+
+
+def format_json(missing):
+    print(json.dumps(missing))
+
+
+def format_yaml(missing):
+    print(yaml.dump(missing, default_flow_style=False))
+
+
+formats = {'pretty': format_pretty,
+           'yaml': format_yaml,
+           'json': format_json}
+
+
 def list_candidates_cmd(config, args):
     """Display candidates builds that are not tagged in testing
     """
@@ -35,7 +56,7 @@ def list_candidates_cmd(config, args):
         # FIXME: assumes that tags are listed in correct order in config file
         tag_from = tags[0]
         tag_to = tags[1]
-        list_candidates(koji, tag_from, tag_to)
+        list_candidates(koji, tag_from, tag_to, out_format=args.format)
 
 
 def list_testing_cmd(config, args):
@@ -47,10 +68,10 @@ def list_testing_cmd(config, args):
         # FIXME: assumes that tags are listed in correct order in config file
         tag_from = tags[1]
         tag_to = tags[2]
-        list_candidates(koji, tag_from, tag_to)
+        list_candidates(koji, tag_from, tag_to, out_format=args.format)
 
 
-def list_candidates(koji, tag_from, tag_to):
+def list_candidates(koji, tag_from, tag_to, out_format='pretty'):
     """Computes builds that in 'tag_from' but not in 'tag_to'
     """
     candidates = koji.retrieve_builds(tag_from)
@@ -62,10 +83,7 @@ def list_candidates(koji, tag_from, tag_to):
                 missing[k] = candidates[k]
         else:
             missing[k] = candidates[k]
-    # FIXME: should output yaml
-    import pprint
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(missing)
+    formats[out_format](missing)
 
 
 def tag_cmd(config, args):
@@ -111,10 +129,16 @@ def main():
                                                    help='list candidates \
                                                    builds')
     parser_list_candidates.add_argument('releases', nargs='+', help='releases')
+    parser_list_candidates.add_argument('--format', help='Output format',
+                                        choices=['pretty', 'json', 'yaml'],
+                                        default='pretty')
 
     parser_list_testing = subparsers.add_parser('list-testing',
                                                 help='list testing builds')
     parser_list_testing.add_argument('releases', nargs='+', help='releases')
+    parser_list_testing.add_argument('--format', help='Output format',
+                                     choices=['pretty', 'json', 'yaml'],
+                                     default='pretty')
 
     parser_tag = subparsers.add_parser('tag', help='tag builds')
     parser_tag.add_argument('-f', required=True, dest='file',
