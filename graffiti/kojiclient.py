@@ -32,12 +32,22 @@ class KojiClient(object):
         """retrieve latest builds in a tag
         """
         tag_id = self._get_tag_id(tag)
-        builds = self.kojiclient.listTagged(tag_id, latest=True)
-        builds = {b['package_name']: {'name': b['package_name'],
-                                      'id': b['build_id'],
-                                      'nvr': b['nvr']}
-                  for b in builds}
-        return builds
+        builds = self.kojiclient.listTagged(tag_id, latest=False)
+        # filter out older builds
+        # Koji listTagged call returns latest modified build *not* latest build
+        # so we retrieve all builds and compaire build id to keep only latest
+        latest_builds = {}
+        for b in builds:
+            package_name = b['package_name']
+            build_id = b['build_id']
+            if package_name in latest_builds:
+                b2 = latest_builds[package_name]
+                if b2['id'] > build_id:
+                    continue
+            latest_builds[package_name] = {'name': package_name,
+                                           'id': build_id,
+                                           'nvr': b['nvr']}
+        return latest_builds
 
     def register_packages(self, tags, pkgs, username):
         """Register packages to a list of tags
