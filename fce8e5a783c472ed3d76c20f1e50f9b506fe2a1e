@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9abe1de1_d4a36d4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 201
+      },
+      "writtenOn": "2017-09-29T20:52:48Z",
+      "side": 1,
+      "message": "Not sure what \"most recently modified\" means and which corner-case triggered this change,\nbut koji list-tagged --latest is correctly and by design returning latest _tagged_ build in a tag and this is exactly needed in case we need to revert to a lower NVR.\n\nI guess this was a race due to build automation, do you have an example?",
+      "revId": "fce8e5a783c472ed3d76c20f1e50f9b506fe2a1e",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
