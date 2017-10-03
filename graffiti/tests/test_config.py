@@ -8,31 +8,8 @@ from graffiti.config import parse_config_file
 
 
 SAMPLE_CONFIG = """releases:
-- name: pike
-  tags:
-  - cloud7-openstack-pike-candidate
-  - cloud7-openstack-pike-testing
-  - cloud7-openstack-pike-release
-- name: ocata
-  tags:
-  - cloud7-openstack-ocata-candidate
-  - cloud7-openstack-ocata-testing
-  - cloud7-openstack-ocata-release
-- name: newton
-  tags:
-  - cloud7-openstack-newton-candidate
-  - cloud7-openstack-newton-testing
-  - cloud7-openstack-newton-release
-- name: mitaka
-  tags:
-  - cloud7-openstack-mitaka-candidate
-  - cloud7-openstack-mitaka-testing
-  - cloud7-openstack-mitaka-release
-- name: common
-  tags:
-  - cloud7-openstack-common-candidate
-  - cloud7-openstack-common-testing
-  - cloud7-openstack-common-release
+rdoinfo:
+  location: ~/.rdopkg/rdoinfo/
 koji:
   username: hguemar
   url: https://cbs.centos.org/kojihub
@@ -54,3 +31,5 @@ def test_parse_config_file():
             os.path.expanduser('~/.centos-server-ca.cert')
         assert info['koji']['serverca_cert'] == \
             os.path.expanduser('/etc/pki/tls/certs/ca-bundle.trust.crt')
+        assert info['rdoinfo']['location'] == \
+            os.path.expanduser('~/.rdopkg/rdoinfo')
