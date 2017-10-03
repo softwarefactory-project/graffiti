@@ -6,33 +6,12 @@ except:
     import mock
 from graffiti.config import parse_config_file
 
+from fake_rdoinfo import _ensure_rdoinfo
+
 
 SAMPLE_CONFIG = """releases:
-- name: pike
-  tags:
-  - cloud7-openstack-pike-candidate
-  - cloud7-openstack-pike-testing
-  - cloud7-openstack-pike-release
-- name: ocata
-  tags:
-  - cloud7-openstack-ocata-candidate
-  - cloud7-openstack-ocata-testing
-  - cloud7-openstack-ocata-release
-- name: newton
-  tags:
-  - cloud7-openstack-newton-candidate
-  - cloud7-openstack-newton-testing
-  - cloud7-openstack-newton-release
-- name: mitaka
-  tags:
-  - cloud7-openstack-mitaka-candidate
-  - cloud7-openstack-mitaka-testing
-  - cloud7-openstack-mitaka-release
-- name: common
-  tags:
-  - cloud7-openstack-common-candidate
-  - cloud7-openstack-common-testing
-  - cloud7-openstack-common-release
+rdoinfo:
+  location: ~/.rdopkg/rdoinfo
 koji:
   username: hguemar
   url: https://cbs.centos.org/kojihub
@@ -44,7 +23,11 @@ koji:
 
 def test_parse_config_file():
     m = mock.mock_open(read_data=SAMPLE_CONFIG)
-    with mock.patch('__builtin__.open', m):
+    # FIXME: the multiple context managers syntax does
+    # not work encapsulated by parenthesis hence disable PEP8 checks
+    with mock.patch('__builtin__.open', m), \
+         mock.patch('graffiti.config._ensure_rdoinfo',
+                    side_effect=_ensure_rdoinfo):  # noqa
         info = parse_config_file('test')
         assert info['koji']['username'] == 'hguemar'
         assert info['koji']['url'] == 'https://cbs.centos.org/kojihub'
@@ -54,3 +37,17 @@ def test_parse_config_file():
             os.path.expanduser('~/.centos-server-ca.cert')
         assert info['koji']['serverca_cert'] == \
             os.path.expanduser('/etc/pki/tls/certs/ca-bundle.trust.crt')
+        assert info['rdoinfo']['location'] == \
+            os.path.expanduser('~/.rdopkg/rdoinfo')
+        assert info['releases'] == \
+            {'newton': ['cloud7-openstack-newton-candidate',
+                        'cloud7-openstack-newton-testing',
+                        'cloud7-openstack-newton-release'],
+             'pike': ['cloud7-openstack-pike-candidate',
+                      'cloud7-openstack-pike-testing',
+                      'cloud7-openstack-pike-release'],
+             'ocata': ['cloud7-openstack-ocata-candidate',
+                       'cloud7-openstack-ocata-testing',
+                       'cloud7-openstack-ocata-release'],
+             'queens': ['cloud7-openstack-queens-candidate',
+                        'cloud7-openstack-queens-testing']}
