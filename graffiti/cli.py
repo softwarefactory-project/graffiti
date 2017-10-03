@@ -122,6 +122,8 @@ def main():
     parser = argparse.ArgumentParser('graffiti is RDO builds tagging utility')
     parser.add_argument('--config-file', default='config.yaml',
                         help='config file. Default: config.yaml')
+    parser.add_argument('--info-repo', help='Path to rdoinfo database. '
+                        'Overrides value in config file.')
     subparsers = parser.add_subparsers(dest='cmd')
 
     subparsers.add_parser('version', help='show version')  # NOQA
@@ -152,7 +154,7 @@ def main():
     if len(sys.argv) == 1:
         sys.argv.append('--help')
     args = parser.parse_args(sys.argv[1:])
-    config = parse_config_file(args.config_file)
+    config = parse_config_file(args.config_file, args.info_repo)
 
     if args.cmd == 'version':
         version_cmd()
