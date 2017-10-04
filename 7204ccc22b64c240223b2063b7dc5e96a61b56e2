@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9abe1de1_2a180284",
+        "filename": "graffiti/config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 267
+      },
+      "writtenOn": "2017-10-04T09:29:57Z",
+      "side": 1,
+      "message": "The dont_write_bytecode hack is only needed if you need to load it twice with different code as done when using diff commands. I think you don\u0027t need this.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "7204ccc22b64c240223b2063b7dc5e96a61b56e2",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
