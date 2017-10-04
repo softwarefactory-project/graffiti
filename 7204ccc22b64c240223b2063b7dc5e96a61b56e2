@@ -22,6 +22,30 @@
       "revId": "7204ccc22b64c240223b2063b7dc5e96a61b56e2",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9abe1de1_651d0d66",
+        "filename": "graffiti/config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2017-10-04T13:14:10Z",
+      "side": 1,
+      "message": "Ack, as specified, this is code taken as-is from rdopkg.",
+      "parentUuid": "9abe1de1_2a180284",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "7204ccc22b64c240223b2063b7dc5e96a61b56e2",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
