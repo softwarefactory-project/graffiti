@@ -2,7 +2,7 @@ from __future__ import print_function
 import os.path
 try:
     import unittest.mock as mock
-except:
+except Exception:
     import mock
 from graffiti.config import parse_config_file
 
