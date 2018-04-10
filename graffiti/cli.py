@@ -94,9 +94,15 @@ def tag_cmd(config, args):
     cmd_file = args.file
     cmds = parse_command_file(cmd_file)
     for release, dat in six.iteritems(cmds):
+        release_info = config['releases_info'][release]
         tags = config['releases'][release]
+        if 'tags_map' in release_info.keys():
+            map_name = release_info['tags_map']
+            tags_map = config['tags_maps'][map_name]
+        else:
+            tags_map = config['tags_maps']['unified_buildreqs']
         for target, builds in six.iteritems(dat):
-            koji.tag_builds(target, tags, builds)
+            koji.tag_builds(target, tags, builds, tags_map)
 
 
 def register_cmd(config, args):

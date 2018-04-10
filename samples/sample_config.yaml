@@ -6,3 +6,13 @@ koji:
   client_cert: ~/.centos.cert
   clientca_cert: ~/.centos-server-ca.cert
   serverca_cert: /etc/pki/tls/certs/ca-bundle.trust.crt
+tags_maps:
+  unified_buildreqs:
+    candidate: [0]
+    testing: [0, 1]
+    release: [0, 1, 2]
+  separated_buildreqs:
+    el7-build: [0]
+    candidate: [1]
+    testing: [2]
+    release: [2, 3]
