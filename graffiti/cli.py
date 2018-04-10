@@ -94,9 +94,14 @@ def tag_cmd(config, args):
     cmd_file = args.file
     cmds = parse_command_file(cmd_file)
     for release, dat in six.iteritems(cmds):
+        release_info = config['releases_info'][release]
         tags = config['releases'][release]
+        if 'separated-buildreqs' in release_info.keys():
+            separated_brs = release_info['separated-buildreqs']
+        else:
+            separated_brs = False
         for target, builds in six.iteritems(dat):
-            koji.tag_builds(target, tags, builds)
+            koji.tag_builds(target, tags, builds, separated_brs=separated_brs)
 
 
 def register_cmd(config, args):

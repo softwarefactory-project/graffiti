@@ -51,3 +51,18 @@ def test_parse_config_file():
                        'cloud7-openstack-ocata-release'],
              'queens': ['cloud7-openstack-queens-candidate',
                         'cloud7-openstack-queens-testing']}
+        assert info['releases_info']['queens'] == \
+            {'name': 'queens',
+             'branch': 'rpm-master',
+             'repos': [{'name': 'el7',
+                        'buildsys': 'cbs/cloud7-openstack-queens-el7',
+                        'buildsys-tags': ['cloud7-openstack-queens-candidate',
+                                          'cloud7-openstack-queens-testing'],
+             'distrepos': [{'name': 'RDO Pike el7',
+                            'url': 'http://mirror.centos.org/centos/7/cloud/x86_64/openstack-queens/'},
+                           {'name': 'CentOS 7 Base',
+                            'url': 'http://mirror.centos.org/centos/7/os/x86_64/'},
+                           {'name': 'CentOS 7 Updates',
+                            'url': 'http://mirror.centos.org/centos/7/updates/x86_64/'},
+                           {'name': 'CentOS 7 Extras',
+                            'url': 'http://mirror.centos.org/centos/7/extras/x86_64/'}]}]}
