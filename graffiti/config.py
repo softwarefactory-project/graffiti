@@ -23,7 +23,9 @@ def parse_config(data, rdoinfo_path=None):
         info['rdoinfo'] = parse_rdoinfo(data)
         rdoinfo_path = info['rdoinfo']['location']
     info['releases'] = parse_releases(rdoinfo_path)
+    info['releases_info'] = parse_releases_info(rdoinfo_path)
     info['koji'] = parse_koji(data)
+    info['tags_maps'] = data['tags_maps']
     return info
 
 
@@ -42,7 +44,7 @@ def _ensure_rdoinfo(path):
 
 
 def parse_releases(rdoinfo_path):
-    """Parse config release section
+    """Parse config release section to extract buildsys-tags
     """
     rdoinfo_db = os.path.join(rdoinfo_path, 'rdo.yml')
     rdoinfo = _ensure_rdoinfo(rdoinfo_path)
@@ -56,6 +58,21 @@ def parse_releases(rdoinfo_path):
         tags = release['repos'][0]['buildsys-tags']
         rel[release_name] = tags
     return rel
+
+
+def parse_releases_info(rdoinfo_path):
+    """Parse config release section
+    """
+    rdoinfo_db = os.path.join(rdoinfo_path, 'rdo.yml')
+    rdoinfo = _ensure_rdoinfo(rdoinfo_path)
+    data = rdoinfo.parse_info_file(rdoinfo_db, include_fns=[])
+    releases = data['releases']
+    releases_info = {}
+    for release in releases:
+        release_name = release['name']
+        info = release
+        releases_info[release_name] = info
+    return releases_info
 
 
 def parse_koji(data):

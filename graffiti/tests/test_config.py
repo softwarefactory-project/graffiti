@@ -18,6 +18,16 @@ koji:
   client_cert: ~/.centos.cert
   clientca_cert: ~/.centos-server-ca.cert
   serverca_cert: /etc/pki/tls/certs/ca-bundle.trust.crt
+tags_maps:
+  unified_buildreqs:
+    candidate: [0]
+    testing: [0, 1]
+    release: [0, 1, 2]
+  separated_buildreqs:
+    el7-build: [0]
+    candidate: [1]
+    testing: [2]
+    release: [2, 3]
 """
 
 
@@ -51,3 +61,26 @@ def test_parse_config_file():
                        'cloud7-openstack-ocata-release'],
              'queens': ['cloud7-openstack-queens-candidate',
                         'cloud7-openstack-queens-testing']}
+        assert info['releases_info']['queens'] == \
+            {'name': 'queens',
+             'branch': 'rpm-master',
+             'repos': [{'name': 'el7',
+                        'buildsys': 'cbs/cloud7-openstack-queens-el7',
+                        'buildsys-tags': ['cloud7-openstack-queens-candidate',
+                                          'cloud7-openstack-queens-testing'],
+                        'distrepos': [{'name': 'RDO Queens el7',
+                                       'url': 'url1'},
+                                      {'name': 'CentOS 7 Base',
+                                       'url': 'url2'},
+                                      {'name': 'CentOS 7 Updates',
+                                       'url': 'url3'},
+                                      {'name': 'CentOS 7 Extras',
+                                       'url': 'url4'}]}]}
+        assert info['tags_maps'] == \
+            {'unified_buildreqs': {'candidate': [0],
+                                   'testing': [0, 1],
+                                   'release': [0, 1, 2]},
+             'separated_buildreqs': {'el7-build': [0],
+                                     'candidate': [1],
+                                     'testing': [2],
+                                     'release': [2, 3]}}
