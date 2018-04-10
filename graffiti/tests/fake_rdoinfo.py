@@ -14,14 +14,14 @@ RDOINFO_SAMPLE = """releases:
     - cloud7-openstack-queens-candidate
     - cloud7-openstack-queens-testing
     distrepos:
-    - name: RDO Pike el7
-      url: http://mirror.centos.org/centos/7/cloud/x86_64/openstack-queens/
+    - name: RDO Queens el7
+      url: url1
     - name: CentOS 7 Base
-      url: http://mirror.centos.org/centos/7/os/x86_64/
+      url: url2
     - name: CentOS 7 Updates
-      url: http://mirror.centos.org/centos/7/updates/x86_64/
+      url: url3
     - name: CentOS 7 Extras
-      url: http://mirror.centos.org/centos/7/extras/x86_64/
+      url: url4
 - name: pike
   branch: pike-rdo
   repos:
