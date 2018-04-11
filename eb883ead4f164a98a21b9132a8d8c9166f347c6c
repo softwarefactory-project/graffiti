@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a50d1a3_3caab171",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2018-04-11T12:33:15Z",
+      "side": 0,
+      "message": "Hey, where multiCall call is gone? It has completely disappeared.",
+      "revId": "eb883ead4f164a98a21b9132a8d8c9166f347c6c",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
