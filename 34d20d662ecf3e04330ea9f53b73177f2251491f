@@ -159,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "3a50d1a3_7ccef95b",
+        "filename": "graffiti/tests/fake_rdoinfo.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 267
+      },
+      "writtenOn": "2018-04-11T14:18:08Z",
+      "side": 1,
+      "message": "yeah, it was just to avoid ugly multilines to meet pep8.",
+      "parentUuid": "3a50d1a3_dcb5cdd0",
+      "revId": "34d20d662ecf3e04330ea9f53b73177f2251491f",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a50d1a3_1cb9f52e",
         "filename": "graffiti/tests/test_config.py",
         "patchSetId": 3
