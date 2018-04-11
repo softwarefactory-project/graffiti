@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a50d1a3_dcdced1a",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 267
+      },
+      "writtenOn": "2018-04-11T12:59:26Z",
+      "side": 1,
+      "message": "Any idea about where to put this config?, graffiti config or rdoinfo?",
+      "parentUuid": "3a50d1a3_dc8e2d27",
+      "revId": "34d20d662ecf3e04330ea9f53b73177f2251491f",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a50d1a3_fc93e94d",
         "filename": "graffiti/kojiclient.py",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2018-04-11T12:30:07Z",
       "side": 1,
       "message": "unnecessary, this is default and reset after a multicall is done.",
+      "revId": "34d20d662ecf3e04330ea9f53b73177f2251491f",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_fce1a9d1",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 267
+      },
+      "writtenOn": "2018-04-11T12:59:26Z",
+      "side": 1,
+      "message": "I\u0027d say it failed without it, maybe there is some orphan multicall \u003d True somewhere, i\u0027ll check.",
+      "parentUuid": "3a50d1a3_fc93e94d",
       "revId": "34d20d662ecf3e04330ea9f53b73177f2251491f",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3a50d1a3_9ce665e7",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 267
+      },
+      "writtenOn": "2018-04-11T12:59:26Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "3a50d1a3_9c98a56c",
+      "revId": "34d20d662ecf3e04330ea9f53b73177f2251491f",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a50d1a3_7ca03991",
         "filename": "graffiti/kojiclient.py",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2018-04-11T12:30:07Z",
       "side": 1,
       "message": "This is a behaviour change, I\u0027d rather have that behaviour a configuration key.",
+      "revId": "34d20d662ecf3e04330ea9f53b73177f2251491f",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_bceb21b0",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 267
+      },
+      "writtenOn": "2018-04-11T12:59:26Z",
+      "side": 1,
+      "message": "What change do you mean?, the target \u003d\u003d none is having the same behavior as before.",
+      "parentUuid": "3a50d1a3_7ca03991",
       "revId": "34d20d662ecf3e04330ea9f53b73177f2251491f",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
