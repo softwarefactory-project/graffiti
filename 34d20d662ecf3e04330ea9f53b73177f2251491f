@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a50d1a3_dc8e2d27",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2018-04-11T12:30:07Z",
+      "side": 1,
+      "message": "This should not be hardcoded, but provided through configuration.",
+      "revId": "34d20d662ecf3e04330ea9f53b73177f2251491f",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_fc93e94d",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2018-04-11T12:30:07Z",
+      "side": 1,
+      "message": "unnecessary, this is default and reset after a multicall is done.",
+      "revId": "34d20d662ecf3e04330ea9f53b73177f2251491f",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_9c98a56c",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2018-04-11T12:30:07Z",
+      "side": 1,
+      "message": "ack for the whole function but this line is unnecessary.",
+      "revId": "34d20d662ecf3e04330ea9f53b73177f2251491f",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_7ca03991",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2018-04-11T12:30:07Z",
+      "side": 1,
+      "message": "This is a behaviour change, I\u0027d rather have that behaviour a configuration key.",
+      "revId": "34d20d662ecf3e04330ea9f53b73177f2251491f",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a50d1a3_1cb9f52e",
         "filename": "graffiti/tests/test_config.py",
         "patchSetId": 3
