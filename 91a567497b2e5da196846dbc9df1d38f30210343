@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a50d1a3_df94dfe9",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2018-04-12T14:26:29Z",
+      "side": 1,
+      "message": "I\u0027d put it outside the loop to have the calls executed in one go. Same for the multicall property.",
+      "revId": "91a567497b2e5da196846dbc9df1d38f30210343",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_ff999b20",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2018-04-12T14:26:29Z",
+      "side": 1,
+      "message": "considering previous comment, if we plan to use _apply_tags in other methods, I\u0027d make optional there the multiCall call to avoid side effects.",
+      "revId": "91a567497b2e5da196846dbc9df1d38f30210343",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
