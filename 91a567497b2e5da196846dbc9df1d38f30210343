@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a50d1a3_bfa3134f",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 267
+      },
+      "writtenOn": "2018-04-12T14:31:37Z",
+      "side": 1,
+      "message": "Note that function _get_tag_ids() has a kojiclient call so i need to put multicall after executing_get_tag_ids().",
+      "parentUuid": "3a50d1a3_df94dfe9",
+      "revId": "91a567497b2e5da196846dbc9df1d38f30210343",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a50d1a3_ff999b20",
         "filename": "graffiti/kojiclient.py",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2018-04-12T14:26:29Z",
       "side": 1,
       "message": "considering previous comment, if we plan to use _apply_tags in other methods, I\u0027d make optional there the multiCall call to avoid side effects.",
+      "revId": "91a567497b2e5da196846dbc9df1d38f30210343",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_5f89afc9",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 267
+      },
+      "writtenOn": "2018-04-12T14:31:37Z",
+      "side": 1,
+      "message": "I think users using _apply_tags will and should expect that, when the method returns the tags are actually applied and not waiting for executing a multiCall(), so IMO, this is the right way to use it.",
+      "parentUuid": "3a50d1a3_ff999b20",
       "revId": "91a567497b2e5da196846dbc9df1d38f30210343",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
