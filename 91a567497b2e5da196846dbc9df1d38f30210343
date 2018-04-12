@@ -141,6 +141,24 @@
       "revId": "91a567497b2e5da196846dbc9df1d38f30210343",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a50d1a3_df629f16",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 267
+      },
+      "writtenOn": "2018-04-12T15:04:35Z",
+      "side": 1,
+      "message": "Additionally, _apply_tags is calling retrieve_buildinfo which has a kojiclient api call that must not be bundled, so we can\u0027t bundle all api calls for different builds.",
+      "parentUuid": "3a50d1a3_9fb5f77f",
+      "revId": "91a567497b2e5da196846dbc9df1d38f30210343",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
