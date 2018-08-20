@@ -53,10 +53,18 @@ def list_candidates_cmd(config, args):
     """
     koji = configure_koji(config)
     for release in args.releases:
+        release_info = config['releases_info'][release]
         tags = config['releases'][release]
-        # FIXME: assumes that tags are listed in correct order in config file
-        tag_from = tags[0]
-        tag_to = tags[1]
+        if 'tags_map' in release_info.keys():
+            map_name = release_info['tags_map']
+        else:
+            map_name = 'unified_buildreqs'
+        if map_name == 'unified_buildreqs':
+            tag_from = tags[0]
+            tag_to = tags[1]
+        else:
+            tag_from = tags[1]
+            tag_to = tags[2]
         list_candidates(koji, tag_from, tag_to, formatter=args.format)
 
 
@@ -65,10 +73,18 @@ def list_testing_cmd(config, args):
     """
     koji = configure_koji(config)
     for release in args.releases:
+        release_info = config['releases_info'][release]
         tags = config['releases'][release]
-        # FIXME: assumes that tags are listed in correct order in config file
-        tag_from = tags[1]
-        tag_to = tags[2]
+        if 'tags_map' in release_info.keys():
+            map_name = release_info['tags_map']
+        else:
+            map_name = 'unified_buildreqs'
+        if map_name == 'unified_buildreqs':
+            tag_from = tags[1]
+            tag_to = tags[2]
+        else:
+            tag_from = tags[2]
+            tag_to = tags[3]
         list_candidates(koji, tag_from, tag_to, formatter=args.format)
 
 
