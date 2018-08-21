@@ -1,0 +1,9 @@
+Code-Review+2: Haïkel Guémar <hguemar@fedoraproject.org>
+Code-Review+1: Yatin Karel <ykarel@redhat.com>
+Workflow+1: Haïkel Guémar <hguemar@fedoraproject.org>
+Verified+2: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-by: Zuul CI <zuul@softwarefactory-project.io>
+Submitted-at: Tue, 21 Aug 2018 14:51:51 +0000
+Reviewed-on: https://softwarefactory-project.io/r/13450
+Project: graffiti
+Branch: refs/heads/master
