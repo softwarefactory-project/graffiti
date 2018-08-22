@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e13bcceb_7715be87",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 166
+      },
+      "writtenOn": "2018-08-22T07:09:15Z",
+      "side": 1,
+      "message": "I wouldn\u0027t merge it as-is. The rationale is you can set up an object without logging in and call then methods requiring it. They should at least throw an error.",
+      "revId": "94645ec43c7b275bd1c095ba7abac69c804f59ec",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
