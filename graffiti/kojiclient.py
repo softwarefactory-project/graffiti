@@ -9,12 +9,15 @@ class KojiClient(object):
     """Centralize interaction with Koji
     """
     def __init__(self, koji_url,
-                 client_cert, clientca_cert, serverca_cert):
+                 client_cert, clientca_cert, serverca_cert,
+                 login_required=True):
         """Setup Koji client session
         Requires server urls and path to certificates
         """
         self.kojiclient = koji.ClientSession(koji_url)
-        self.kojiclient.ssl_login(client_cert, clientca_cert, serverca_cert)
+        if login_required:
+            self.kojiclient.ssl_login(client_cert, clientca_cert,
+                                      serverca_cert)
 
     def _get_tag_id(self, tag):
         """map tag name to tag ID in Koji

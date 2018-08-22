@@ -13,14 +13,15 @@ from graffiti.kojiclient import KojiClient
 from graffiti.config import parse_config_file, parse_command_file
 
 
-def configure_koji(config):
+def configure_koji(config, login_required=True):
     """Configure a Koji object to be usable by commands
     """
     koji_url = config['koji']['url']
     client_cert = config['koji']['client_cert']
     clientca_cert = config['koji']['clientca_cert']
     serverca_cert = config['koji']['serverca_cert']
-    return KojiClient(koji_url, client_cert, clientca_cert, serverca_cert)
+    return KojiClient(koji_url, client_cert, clientca_cert, serverca_cert,
+                      login_required)
 
 
 def version_cmd():
@@ -51,7 +52,6 @@ formatters = {'pretty': format_pretty,
 def list_candidates_cmd(config, args):
     """Display candidates builds that are not tagged in testing
     """
-    koji = configure_koji(config)
     for release in args.releases:
         release_info = config['releases_info'][release]
         tags = config['releases'][release]
@@ -65,13 +65,12 @@ def list_candidates_cmd(config, args):
         else:
             tag_from = tags[1]
             tag_to = tags[2]
-        list_candidates(koji, tag_from, tag_to, formatter=args.format)
+        list_candidates(config, tag_from, tag_to, formatter=args.format)
 
 
 def list_testing_cmd(config, args):
     """Display testing builds that are not tagged in release
     """
-    koji = configure_koji(config)
     for release in args.releases:
         release_info = config['releases_info'][release]
         tags = config['releases'][release]
@@ -85,12 +84,13 @@ def list_testing_cmd(config, args):
         else:
             tag_from = tags[2]
             tag_to = tags[3]
-        list_candidates(koji, tag_from, tag_to, formatter=args.format)
+        list_candidates(config, tag_from, tag_to, formatter=args.format)
 
 
-def list_candidates(koji, tag_from, tag_to, formatter='pretty'):
+def list_candidates(config, tag_from, tag_to, formatter='pretty'):
     """Computes builds that in 'tag_from' but not in 'tag_to'
     """
+    koji = configure_koji(config, login_required=False)
     candidates = koji.retrieve_builds(tag_from)
     testing = koji.retrieve_builds(tag_to)
     missing = {}
