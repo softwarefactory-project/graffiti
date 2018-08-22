@@ -34,6 +34,24 @@
       "revId": "94645ec43c7b275bd1c095ba7abac69c804f59ec",
       "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "640d4765_dfdae61e",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 430
+      },
+      "writtenOn": "2018-08-22T07:57:32Z",
+      "side": 1,
+      "message": "This patch only changing the behavior for list-candidates, rest commands remain intact. Added support for any other commands to use login_required\u003dFalse.\n\nSo i tried what u doubt, example:- ran \"tag\" command with login_required\u003dFalse(which i think is wrong as user trying this without_login would know what\u0027s he is doing and need code changes)\n\nSo this is what i got after code changes for tag command:-\n\n(test) [ykarel@yatinkarel rdoinfo]$ /tmp/gating_scripts/test/bin/graffiti --config-file /tmp/gating_scripts/buildsys-tags/graffiti_config.yaml tag -f file.yaml \n\nTraceback (most recent call last):\n  File \"/tmp/gating_scripts/test/bin/graffiti\", line 11, in \u003cmodule\u003e\n    sys.exit(main())\n  File \"/tmp/gating_scripts/test/lib/python2.7/site-packages/graffiti/cli.py\", line 188, in main\n    tag_cmd(config, args)\n  File \"/tmp/gating_scripts/test/lib/python2.7/site-packages/graffiti/cli.py\", line 121, in tag_cmd\n    koji.tag_builds(target, tags, builds, tags_map)\n  File \"/tmp/gating_scripts/test/lib/python2.7/site-packages/graffiti/kojiclient.py\", line 154, in tag_builds\n    self._apply_tags(build, tags, add_tags)\n  File \"/tmp/gating_scripts/test/lib/python2.7/site-packages/graffiti/kojiclient.py\", line 116, in _apply_tags\n    self.kojiclient.multiCall(strict\u003dTrue)\n  File \"/tmp/gating_scripts/test/lib/python2.7/site-packages/koji/__init__.py\", line 2552, in multiCall\n    raise err\nkoji.GenericError: a user_id is required\n\nplease correct me if i got something wrong.",
+      "parentUuid": "e13bcceb_7715be87",
+      "revId": "94645ec43c7b275bd1c095ba7abac69c804f59ec",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
     }
   ]
 }
