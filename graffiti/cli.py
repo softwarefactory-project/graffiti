@@ -65,7 +65,10 @@ def list_candidates_cmd(config, args):
         else:
             tag_from = tags[1]
             tag_to = tags[2]
-        list_candidates(koji, tag_from, tag_to, formatter=args.format)
+        if args.all:
+            list_all_candidates(koji, tag_from, tag_to, formatter=args.format)
+        else:
+            list_candidates(koji, tag_from, tag_to, formatter=args.format)
 
 
 def list_testing_cmd(config, args):
@@ -99,6 +102,18 @@ def list_candidates(koji, tag_from, tag_to, formatter='pretty'):
             if candidates[k]['id'] > testing[k]['id']:
                 missing[k] = candidates[k]
         else:
+            missing[k] = candidates[k]
+    formatters[formatter](missing)
+
+
+def list_all_candidates(koji, tag_from, tag_to, formatter='pretty'):
+    """Computes builds that in 'tag_from' but not in 'tag_to'
+    """
+    candidates = koji.retrieve_all_builds(tag_from)
+    testing = koji.retrieve_all_builds(tag_to)
+    missing = {}
+    for k in six.iterkeys(candidates):
+        if k not in testing:
             missing[k] = candidates[k]
     formatters[formatter](missing)
 
@@ -154,6 +169,8 @@ def main():
                                                    help='list candidates \
                                                    builds')
     parser_list_candidates.add_argument('releases', nargs='+', help='releases')
+    parser_list_candidates.add_argument('--all', help='Show all builds, not\
+                                        latest only', action='store_true')
     parser_list_candidates.add_argument('--format', help='Output format',
                                         choices=['pretty', 'json', 'yaml'],
                                         default='pretty')

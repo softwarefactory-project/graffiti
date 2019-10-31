@@ -61,6 +61,20 @@ class KojiClient(object):
                                            'nvr': b['nvr']}
         return latest_builds
 
+    def retrieve_all_builds(self, tag):
+        """retrieve all builds in a tag
+        """
+        tag_id = self._get_tag_id(tag)
+        builds = self.kojiclient.listTagged(tag_id, latest=False)
+        all_builds = {}
+        for b in builds:
+            package_name = b['package_name']
+            build_id = b['build_id']
+            all_builds[build_id] = {'name': package_name,
+                                    'id': build_id,
+                                    'nvr': b['nvr']}
+        return all_builds
+
     def register_packages(self, tags, pkgs, username):
         """Register packages to a list of tags
         Username is Koji owner
