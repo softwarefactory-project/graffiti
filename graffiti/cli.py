@@ -65,7 +65,10 @@ def list_candidates_cmd(config, args):
         else:
             tag_from = tags[1]
             tag_to = tags[2]
-        list_candidates(koji, tag_from, tag_to, formatter=args.format)
+        if args.old:
+            list_old_candidates(koji, tag_from, tag_to, formatter=args.format)
+        else:
+            list_candidates(koji, tag_from, tag_to, formatter=args.format)
 
 
 def list_testing_cmd(config, args):
@@ -100,6 +103,24 @@ def list_candidates(koji, tag_from, tag_to, formatter='pretty'):
                 missing[k] = candidates[k]
         else:
             missing[k] = candidates[k]
+    formatters[formatter](missing)
+
+
+def list_old_candidates(koji, tag_from, tag_to, formatter='pretty'):
+    """Computes builds that in 'tag_from' but not in 'tag_to'
+       which are older that latest on in 'tag_to'
+    """
+    candidates = koji.retrieve_all_builds(tag_from)
+    testing = koji.retrieve_all_builds(tag_to)
+    testing_latest = koji.retrieve_builds(tag_to)
+    missing = {}
+    for k in six.iterkeys(candidates):
+        name = candidates[k]['name']
+        try:
+            if k not in testing and k < testing_latest[name]['id']:
+                missing[k] = candidates[k]
+        except:
+            pass
     formatters[formatter](missing)
 
 
@@ -154,6 +175,9 @@ def main():
                                                    help='list candidates \
                                                    builds')
     parser_list_candidates.add_argument('releases', nargs='+', help='releases')
+    parser_list_candidates.add_argument('--old', help='Show old builds in\
+                                        candidate but not in testing tags',
+                                        action='store_true')
     parser_list_candidates.add_argument('--format', help='Output format',
                                         choices=['pretty', 'json', 'yaml'],
                                         default='pretty')
