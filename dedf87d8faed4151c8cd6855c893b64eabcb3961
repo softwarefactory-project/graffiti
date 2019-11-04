@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bc69958_8f35cb06",
+        "filename": "graffiti/kojiclient.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 200
+      },
+      "writtenOn": "2019-11-04T17:57:02Z",
+      "side": 1,
+      "message": "it looks like we are duplicating retrieve_builds here. Can we merge this code there, and make it just a flag for retrieve_builds?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 25
+      },
+      "revId": "dedf87d8faed4151c8cd6855c893b64eabcb3961",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
