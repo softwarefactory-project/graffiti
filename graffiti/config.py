@@ -5,24 +5,24 @@ import os.path
 import yaml
 
 
-def parse_config_file(filename, rdoinfo_path=None):
+def parse_config_file(filename, rdoinfo_path=None, centos_release='7'):
     """Parse graffiti config file
     """
     with open(filename, 'rb') as cfg_file:
         data = yaml.load(cfg_file)
-        info = parse_config(data, rdoinfo_path)
+        info = parse_config(data, rdoinfo_path, centos_release)
         return info
     return None
 
 
-def parse_config(data, rdoinfo_path=None):
+def parse_config(data, rdoinfo_path=None, centos_release='7'):
     """Config file parser
     """
     info = {}
     if not rdoinfo_path:
         info['rdoinfo'] = parse_rdoinfo(data)
         rdoinfo_path = info['rdoinfo']['location']
-    info['releases'] = parse_releases(rdoinfo_path)
+    info['releases'] = parse_releases(rdoinfo_path, centos_release)
     info['releases_info'] = parse_releases_info(rdoinfo_path)
     info['koji'] = parse_koji(data)
     info['tags_maps'] = data['tags_maps']
@@ -43,7 +43,7 @@ def _ensure_rdoinfo(path):
     return rdoinfo
 
 
-def parse_releases(rdoinfo_path):
+def parse_releases(rdoinfo_path, centos_release='7'):
     """Parse config release section to extract buildsys-tags
     """
     rdoinfo_db = os.path.join(rdoinfo_path, 'rdo.yml')
@@ -53,9 +53,14 @@ def parse_releases(rdoinfo_path):
     data = rdoinfo.parse_info_file(rdoinfo_db, include_fns=[])
     releases = data['releases']
     rel = {}
+    dist_tag = "el{0}".format(centos_release)
     for release in releases:
         release_name = release['name']
-        tags = release['repos'][0]['buildsys-tags']
+        filter_repos = [dist for dist in release['repos'] if dist['name'] == dist_tag]
+        if filter_repos:
+            tags = filter_repos[0]['buildsys-tags']
+        else:
+            tags = release['repos'][0]['buildsys-tags']
         rel[release_name] = tags
     return rel
 
