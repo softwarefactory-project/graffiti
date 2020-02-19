@@ -169,6 +169,9 @@ def main():
                         help='config file. Default: config.yaml')
     parser.add_argument('--info-repo', help='Path to rdoinfo database. '
                         'Overrides value in config file.')
+    parser.add_argument('--centos-release', default='7',
+                        choices=['7', '8'],
+                        help='CentOS Release to check.')
     subparsers = parser.add_subparsers(dest='cmd')
 
     subparsers.add_parser('version', help='show version')  # NOQA
@@ -202,7 +205,8 @@ def main():
     if len(sys.argv) == 1:
         sys.argv.append('--help')
     args = parser.parse_args(sys.argv[1:])
-    config = parse_config_file(args.config_file, args.info_repo)
+    config = parse_config_file(args.config_file, args.info_repo,
+                               args.centos_release)
 
     if args.cmd == 'version':
         version_cmd()
