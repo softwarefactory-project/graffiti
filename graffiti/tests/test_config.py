@@ -25,6 +25,7 @@ tags_maps:
     release: [0, 1, 2]
   separated_buildreqs:
     el7-build: [0]
+    el8-build: [0]
     candidate: [1]
     testing: [2]
     release: [2, 3]
@@ -81,6 +82,7 @@ def test_parse_config_file():
                                    'testing': [0, 1],
                                    'release': [0, 1, 2]},
              'separated_buildreqs': {'el7-build': [0],
+                                     'el8-build': [0],
                                      'candidate': [1],
                                      'testing': [2],
                                      'release': [2, 3]}}
