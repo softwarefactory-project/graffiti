@@ -130,7 +130,7 @@ class KojiClient(object):
 
     def tag_builds(self, target, tags, builds, tags_map):
         """Tag builds in koji
-        target is build expected status (none, el7-build, testing, release)
+        target is build expected status (none, el7-build, el8-build, testing, release)
 
         This function ensures that build is also tagged in previous tags as
         defined in the appropiate tags workflow:
@@ -141,7 +141,7 @@ class KojiClient(object):
             -release.
        - tags_map = separated_buildreqs (from Rocky on):
           * BuildRequires only will be untagged from -candidate and tagged into
-            -el7-build.
+            -el7-build or -el8-build.
           * Other packages, when tagged into -testing will be untagged from
             -candidate.
           * Packages tagged to -release will be also tagged into -testing.
@@ -149,11 +149,11 @@ class KojiClient(object):
         A specific target 'none' allows removing a build from all tags
         """
 
-        available_targets = ['none', 'el7-build', 'candidate', 'testing',
+        available_targets = ['none', 'el7-build', 'el8-build', 'candidate', 'testing',
                              'release']
         if target not in available_targets:
-            raise Exception("""Target must be ['none', 'el7-build', 'candidate', 'testing', 'release'].
-                            Provided '{}'""".format(target))
+            raise Exception("""Target must be in {}.
+                            Provided '{}'""".format(available_targets, target))
 
         for build in builds:
             if target == 'none':
