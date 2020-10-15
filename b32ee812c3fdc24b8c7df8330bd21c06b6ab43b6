@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e7c5d3b_43e9060a",
+        "filename": ".zuul.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 200
+      },
+      "writtenOn": "2020-10-15T12:43:36Z",
+      "side": 1,
+      "message": "We should remove the job definitions in sf.io\u0027s config repo (could be done as a follow-up patch)",
+      "revId": "b32ee812c3fdc24b8c7df8330bd21c06b6ab43b6",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a32b59c4_a6f79b5c",
+        "filename": "graffiti/tests/test_config.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 200
+      },
+      "writtenOn": "2020-10-15T12:43:36Z",
+      "side": 1,
+      "message": "If we just remove this line, all tests should pass.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 10
+      },
+      "revId": "b32ee812c3fdc24b8c7df8330bd21c06b6ab43b6",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    }
+  ]
+}
