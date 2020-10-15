@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "20330d83_e44e1893",
+        "filename": ".zuul.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 267
+      },
+      "writtenOn": "2020-10-15T13:04:13Z",
+      "side": 1,
+      "message": "https://softwarefactory-project.io/r/#/c/19826/",
+      "parentUuid": "6e7c5d3b_43e9060a",
+      "revId": "b32ee812c3fdc24b8c7df8330bd21c06b6ab43b6",
+      "serverId": "6c1dc8ef-8b94-40e4-bd83-c2359d45ecc0",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a32b59c4_a6f79b5c",
         "filename": "graffiti/tests/test_config.py",
         "patchSetId": 5
