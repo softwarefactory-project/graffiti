@@ -103,10 +103,10 @@ class KojiClient(object):
                 self.kojiclient.packageListRemove(tag_id, pkg, force)
         self.kojiclient.multiCall(strict=True)
 
-    def _apply_tags(self, build, tags, added_tags):
+    def _apply_tags(self, builds, tags, added_tags):
         """ Apply tags in a koji instance for a build.
             params:
-             - build: nvr for the build to be tagged.
+             - builds: list of nvrs for the builds to be tagged.
              - tags: list of tags in a release
              - added_tags: tags required for a build in
                the given release
@@ -115,18 +115,25 @@ class KojiClient(object):
         tag_ids = self._get_tag_ids(tags)
         remove_tags = copy.copy(tag_ids)
 
-        buildinfo = self.retrieve_build_info(build)
-        if not buildinfo:
-            raise Exception("Build %s does not exist" % build)
-        build_tags = buildinfo['tags']
-        self.kojiclient.multicall = True
         for added in added_tags:
+            add_builds = []
             remove_tags.remove(tag_ids[added])
-            if tags[added] not in build_tags:
-                self.kojiclient.tagBuild(tag_ids[added], build)
+            for build in builds:
+                buildinfo = self.retrieve_build_info(build)
+                if not buildinfo:
+                    raise Exception("Build %s does not exist" % build)
+                build_tags = buildinfo['tags']
+                if tags[added] not in build_tags:
+                    add_builds.append(build)
+            self.kojiclient.multicall = True
+            for add_build in add_builds:
+                self.kojiclient.tagBuild(tag_ids[added], add_build)
+            self.kojiclient.multiCall(strict=True)
         for removed in remove_tags:
-            self.kojiclient.untagBuild(removed, build, strict=False)
-        self.kojiclient.multiCall(strict=True)
+            self.kojiclient.multicall = True
+            for build in builds:
+                self.kojiclient.untagBuild(removed, build, strict=False)
+            self.kojiclient.multiCall(strict=True)
 
     def tag_builds(self, target, tags, builds, tags_map):
         """Tag builds in koji
@@ -156,13 +163,13 @@ class KojiClient(object):
             raise Exception("""Target must be in {}.
                             Provided '{}'""".format(available_targets, target))
 
-        for build in builds:
-            if target == 'none':
+        if target == 'none':
+            for build in builds:
                 tag_ids = self._get_tag_ids(tags)
                 self.kojiclient.multicall = True
                 for tag_id in tag_ids:
                     self.kojiclient.untagBuild(tag_id, build, strict=False)
                 self.kojiclient.multiCall(strict=True)
-            else:
-                add_tags = tags_map[target]
-                self._apply_tags(build, tags, add_tags)
+        else:
+            add_tags = tags_map[target]
+            self._apply_tags(builds, tags, add_tags)
