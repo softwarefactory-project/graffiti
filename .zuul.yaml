@@ -1,0 +1,30 @@
+---
+
+- project:
+    name: graffiti
+    check:
+      jobs:
+        - tox-pep8:
+            nodeset: fedora-latest-pod
+        - tox-py27:
+            nodeset:
+              nodes:
+                - name:  pod-centos-7-epel
+                  label:  pod-centos-7-epel
+        - tox-py36:
+            nodeset: centos-latest-pod
+            vars:
+                tox_install_bindep: false
+    gate:
+      jobs:
+        - tox-pep8:
+            nodeset: fedora-latest-pod
+        - tox-py27:
+            nodeset:
+              nodes:
+                - name:  pod-centos-7-epel
+                  label:  pod-centos-7-epel
+        - tox-py36:
+            nodeset: centos-latest-pod
+            vars:
+                tox_install_bindep: false
