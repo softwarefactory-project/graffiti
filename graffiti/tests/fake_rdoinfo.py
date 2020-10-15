@@ -83,5 +83,5 @@ def parse_info_file(rdoinfo_db, include_fns):
     return yaml.load(RDOINFO_SAMPLE)
 
 
-def _ensure_rdoinfo(path):
+def ensure_rdoinfo(path):
     return sys.modules[__name__]
