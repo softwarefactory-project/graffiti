@@ -2,11 +2,13 @@ from __future__ import print_function
 import os.path
 try:
     import unittest.mock as mock
+    mopen = 'builtins.open'
 except Exception:
     import mock
+    mopen = '__builtin__.open'
 from graffiti.config import parse_config_file
 
-from fake_rdoinfo import _ensure_rdoinfo
+from .fake_rdoinfo import _ensure_rdoinfo
 
 
 SAMPLE_CONFIG = """releases:
@@ -36,7 +38,7 @@ def test_parse_config_file():
     m = mock.mock_open(read_data=SAMPLE_CONFIG)
     # FIXME: the multiple context managers syntax does
     # not work encapsulated by parenthesis hence disable PEP8 checks
-    with mock.patch('__builtin__.open', m), \
+    with mock.patch(mopen, m), \
          mock.patch('graffiti.config._ensure_rdoinfo',
                     side_effect=_ensure_rdoinfo):  # noqa
         info = parse_config_file('test')
