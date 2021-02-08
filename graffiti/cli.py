@@ -172,6 +172,8 @@ def main():
     parser.add_argument('--centos-release', default='7',
                         choices=['7', '8', '8s'],
                         help='CentOS Release to check.')
+    parser.add_argument('--info-file', default='rdo.yml',
+                        help='Main info file. Default: rdo.yml')
     subparsers = parser.add_subparsers(dest='cmd')
 
     subparsers.add_parser('version', help='show version')  # NOQA
@@ -206,7 +208,7 @@ def main():
         sys.argv.append('--help')
     args = parser.parse_args(sys.argv[1:])
     config = parse_config_file(args.config_file, args.info_repo,
-                               args.centos_release)
+                               args.centos_release, args.info_file)
 
     if args.cmd == 'version':
         version_cmd()
