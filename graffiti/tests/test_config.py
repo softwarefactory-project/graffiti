@@ -1,12 +1,11 @@
 from __future__ import print_function
+from fake_rdoinfo import FakeRdoinfo
 import os.path
 try:
     import unittest.mock as mock
 except Exception:
     import mock
 from graffiti.config import parse_config_file
-
-from fake_rdoinfo import _ensure_rdoinfo
 
 
 SAMPLE_CONFIG = """releases:
@@ -37,8 +36,8 @@ def test_parse_config_file():
     # FIXME: the multiple context managers syntax does
     # not work encapsulated by parenthesis hence disable PEP8 checks
     with mock.patch('six.moves.builtins.open', m), \
-         mock.patch('graffiti.config._ensure_rdoinfo',
-                    side_effect=_ensure_rdoinfo):  # noqa
+        mock.patch('distroinfo.info.DistroInfo',
+                   FakeRdoinfo):
         info = parse_config_file('test')
         assert info['koji']['username'] == 'hguemar'
         assert info['koji']['url'] == 'https://cbs.centos.org/kojihub'

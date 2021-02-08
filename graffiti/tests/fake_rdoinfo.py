@@ -1,7 +1,6 @@
 # Fake rdoinfo module for tests
 #
 
-import sys
 import yaml
 
 RDOINFO_SAMPLE = """releases:
@@ -79,9 +78,9 @@ RDOINFO_SAMPLE = """releases:
 """
 
 
-def parse_info_file(rdoinfo_db, include_fns):
-    return yaml.load(RDOINFO_SAMPLE)
+class FakeRdoinfo(object):
+    def __init__(self, **kwargs):
+        pass
 
-
-def _ensure_rdoinfo(path):
-    return sys.modules[__name__]
+    def get_info(self, **kwargs):
+        return yaml.load(RDOINFO_SAMPLE)
