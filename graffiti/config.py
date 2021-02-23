@@ -54,7 +54,8 @@ def parse_releases(rdoinfo_path, centos_release='7', info_file='rdo.yml'):
         if filter_repos:
             tags = filter_repos[0]['buildsys-tags']
         else:
-            tags = release['repos'][0]['buildsys-tags']
+            raise Exception("Release %s don't have tag %s defined" % (
+                            release_name, dist_tag))
         rel[release_name] = tags
     return rel
 
