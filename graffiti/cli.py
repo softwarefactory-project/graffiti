@@ -170,7 +170,7 @@ def main():
     parser.add_argument('--info-repo', help='Path to rdoinfo database. '
                         'Overrides value in config file.')
     parser.add_argument('--centos-release', default='7',
-                        choices=['7', '8', '8s'],
+                        choices=['7', '8', '8s', '9s'],
                         help='CentOS Release to check.')
     parser.add_argument('--info-file', default='rdo.yml',
                         help='Main info file. Default: rdo.yml')
