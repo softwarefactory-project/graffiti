@@ -157,8 +157,8 @@ class KojiClient(object):
         A specific target 'none' allows removing a build from all tags
         """
 
-        available_targets = ['none', 'el7-build', 'el8-build', 'candidate',
-                             'testing', 'release']
+        available_targets = ['none', 'el7-build', 'el8-build', 'el9s-build',
+                             'candidate', 'testing', 'release']
         if target not in available_targets:
             raise Exception("""Target must be in {}.
                             Provided '{}'""".format(available_targets, target))
