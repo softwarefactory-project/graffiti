@@ -83,4 +83,4 @@ class FakeRdoinfo(object):
         pass
 
     def get_info(self, **kwargs):
-        return yaml.load(RDOINFO_SAMPLE)
+        return yaml.safe_load(RDOINFO_SAMPLE)

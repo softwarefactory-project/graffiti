@@ -11,7 +11,7 @@ def parse_config_file(filename, rdoinfo_path=None, centos_release='7',
     """Parse graffiti config file
     """
     with open(filename, 'rb') as cfg_file:
-        data = yaml.load(cfg_file)
+        data = yaml.safe_load(cfg_file)
         info = parse_config(data, rdoinfo_path, centos_release, info_file)
         return info
     return None
@@ -90,6 +90,6 @@ def parse_command_file(filename):
     """Parse command files
     """
     with open(filename, 'rb') as cmd_file:
-        data = yaml.load(cmd_file)
+        data = yaml.safe_load(cmd_file)
         return data
     return {}
