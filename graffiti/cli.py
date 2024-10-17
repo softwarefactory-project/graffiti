@@ -169,8 +169,8 @@ def main():
                         help='config file. Default: config.yaml')
     parser.add_argument('--info-repo', help='Path to rdoinfo database. '
                         'Overrides value in config file.')
-    parser.add_argument('--centos-release', default='7',
-                        choices=['7', '8', '8s', '9s'],
+    parser.add_argument('--centos-release', default='9s',
+                        choices=['9s', '10s'],
                         help='CentOS Release to check.')
     parser.add_argument('--info-file', default='rdo.yml',
                         help='Main info file. Default: rdo.yml')

@@ -6,7 +6,7 @@ import yaml
 from distroinfo import info as dinfo
 
 
-def parse_config_file(filename, rdoinfo_path=None, centos_release='7',
+def parse_config_file(filename, rdoinfo_path=None, centos_release='9s',
                       info_file='rdo.yml'):
     """Parse graffiti config file
     """
@@ -17,7 +17,7 @@ def parse_config_file(filename, rdoinfo_path=None, centos_release='7',
     return None
 
 
-def parse_config(data, rdoinfo_path=None, centos_release='7',
+def parse_config(data, rdoinfo_path=None, centos_release='9s',
                  info_file='rdo.yml'):
     """Config file parser
     """
@@ -39,7 +39,7 @@ def parse_rdoinfo(data):
     return {'location': location}
 
 
-def parse_releases(rdoinfo_path, centos_release='7', info_file='rdo.yml'):
+def parse_releases(rdoinfo_path, centos_release='9s', info_file='rdo.yml'):
     """Parse config release section to extract buildsys-tags
     """
     data = dinfo.DistroInfo(info_files=info_file,

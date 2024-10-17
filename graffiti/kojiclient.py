@@ -158,7 +158,7 @@ class KojiClient(object):
         """
 
         available_targets = ['none', 'el7-build', 'el8-build', 'el9s-build',
-                             'candidate', 'testing', 'release']
+                             'el10s-build', 'candidate', 'testing', 'release']
         if target not in available_targets:
             raise Exception("""Target must be in {}.
                             Provided '{}'""".format(available_targets, target))
